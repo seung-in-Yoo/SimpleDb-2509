@@ -238,7 +238,7 @@ public class SimpleDb {
         return list;
     }
 
-    // t015, t016
+    // t015, t016, t017
     <T> List<T> toList(ResultSet rs, Class<T> type) throws Exception {
         List<Map<String, Object>> maps = toListOfMaps(rs);
         List<T> out = new ArrayList<>(maps.size());

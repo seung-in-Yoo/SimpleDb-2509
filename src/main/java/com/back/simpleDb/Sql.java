@@ -44,7 +44,7 @@ public class Sql {
     // appendIn("WHERE id IN (?)", 1,2,3)   → "WHERE id IN (?, ?, ?)" + [1,2,3]
     // appendIn("ORDER BY FIELD(id, ?)", 2,1,3) → "ORDER BY FIELD(id, ?, ?, ?)" + [2,1,3]
     // appendIn("VALUES (NOW(), NOW(), ?)", "제목", "내용") → "VALUES (NOW(), NOW(), ?, ?)" + ["제목","내용"]
-    // t012, t013, t014
+    // t012, t013, t014, t018, t019
     public Sql appendIn(String sqlPartWithPlaceholder, Object... values) {
         Objects.requireNonNull(sqlPartWithPlaceholder, "sqlPartWithPlaceholder");
         // 배열,컬렉션,단일값 전부 1차원 리스트로
@@ -128,7 +128,7 @@ public class Sql {
     }
 
     // 첫 칼럼 long 반환 , 다양한 타입을 long으로 정규화
-    // t007, t012, t013, t014
+    // t007, t012, t013, t014, t018, t019
     public Long selectLong() {
         Object v = selectScalar();
         if (v == null) { return null; }
@@ -239,7 +239,7 @@ public class Sql {
     }
 
     // 단건 DTO 조회 (없으면 null)
-    // t016
+    // t016, t017
     public <T> T selectRow(Class<T> type) {
         List<T> rows = selectRows(type);
         return rows.isEmpty() ? null : rows.getFirst();
